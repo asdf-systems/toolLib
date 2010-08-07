@@ -1,14 +1,18 @@
 ## No dragons yes ##################
 
-TARG=appname
+TARG=testCase
 CPPFILES=\
 	$(TARG).cpp\
-	additional_files.cpp\
+	String.cpp\
+	DebugInfo.cpp \
+	StringFactory.cpp \
+	StringWX.cpp 
 
 ## Here be dragons #################
 
-CXX=g++
-CXXFLAGS=-O2
+CXX=colorgcc
+CXXFLAGS=-O2 -Wall -pg `wx-config --cxxflags` -ggdb 
+LDFLAGS := -pg `wx-config --libs media core base net` -L/usr/local/lib -lmysqlpp -lmysqlclient -lnsl -lz -lm
 INCLUDES=-I.
 LIBS=
 
@@ -25,7 +29,7 @@ obj:
 	$(CXX) -c $(CXXFLAGS) $(CXXADDFLAGS) $(INCLUDES) $(CPPFILES)
 
 link:
-	$(CXX) $(CXXFLAGS) $(CXXADDFLAGS) $(LIBS) $(OBJFILES)  -o $(TARG)
+	$(CXX) $(CXXFLAGS) $(CXXADDFLAGS) $(LIBS) $(OBJFILES) $(LDFLAGS)  -o $(TARG)
 
 clean:
 	-@rm *.o $(TARG) *~ 
