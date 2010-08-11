@@ -15,19 +15,19 @@ namespace asdf{
 	
 	class String { //: public DebugAble, ReaderWriter{
 		public:
-			String();
-			String(const char* value);
-			~String();
-			virtual void split(String string, String pattern, std::vector<String>& result) = 0;
-			virtual bool match(String pattern) = 0;
-			virtual void replace(String replace, String replaced, String& result) = 0;
-			virtual void subString(int start, int end, String& result) = 0;
-			virtual void clear() = 0;
-			virtual int length() = 0;
-			virtual String operator+(String& operand) = 0;
-			virtual String operator+=(String& operand) = 0;
-			virtual bool operator==(String& operand) = 0;
-			virtual const char* toCStr() = 0;
+			//String();
+			//String(const char* value);
+			//~String();
+			virtual void split(String string, String pattern, std::vector<String>& result){};
+			virtual bool match(String pattern){};
+			virtual void replace(String replace, String replaced, String& result){};
+			virtual void subString(int start, int end, String& result){};
+			virtual void clear(){};
+			virtual int length(){};
+			virtual String operator+(String& operand){};
+			virtual String operator+=(String& operand){};
+			virtual bool operator==(String& operand){};
+			virtual const char* toCStr(){};
 		
 	};
 }

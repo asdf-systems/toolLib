@@ -50,11 +50,5 @@ int main(){
 	//testLocalPointer();
 	testString();
 	
-	
-	
-	
-
-	
-	
 }
 

@@ -4,8 +4,8 @@ TARG=testCase
 CPPFILES=\
 	StringFactory.cpp \
 	StringWX.cpp \
-	String.cpp \
 	$(TARG).cpp\
+	#String.cpp \
 	#String.cpp\
 	#DebugInfo.cpp \
 	

@@ -7,8 +7,8 @@ namespace asdf{
 	
 	class StringFactory{
 		public:
-			static StringWX getString();
-			static StringWX getString(char* value);
+			static String getString();
+			static String getString(char* value);
 	};
 }
 #endif // Headerguard

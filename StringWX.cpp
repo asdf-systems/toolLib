@@ -19,12 +19,12 @@ namespace asdf{
 	
 	}
 	
-	void StringWX::split(StringWX string,StringWX pattern, std::vector<String>& result){
+	void StringWX::split(String string,String pattern, std::vector<String>& result){
 		
 		//mDebugInfo.setFunctionName("Split");
 		
-		StringWX tmp = StringFactory::getString();
-		StringWX save = StringFactory::getString();
+		String tmp = StringFactory::getString();
+		String save = StringFactory::getString();
 		int fst = 0;
 
 		for (int i = 0; i < string.length(); i++)
@@ -49,7 +49,7 @@ namespace asdf{
 		
 	}
 	
-	void StringWX::subString(int start, int end, StringWX& result){
+	void StringWX::subString(int start, int end, String& result){
 		wxString tmp = mValue.SubString(start, end);
 		result = StringWX(tmp.mb_str());
 	}
@@ -57,12 +57,12 @@ namespace asdf{
 		mValue.Len();
 	}
 	
-	bool StringWX::match(StringWX pattern){
+	bool StringWX::match(String pattern){
 		wxString tmp(pattern.toCStr(), wxConvUTF8);
 		return mValue.Matches(tmp);
 	}
 	
-	void StringWX::replace(StringWX replace, StringWX replaced, StringWX& result){
+	void StringWX::replace(String replace, String replaced, String& result){
 	
 		
 	}
