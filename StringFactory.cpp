@@ -1,10 +1,7 @@
 #include "StringFactory.h"
+#include "StringWX.h"
 
 namespace asdf{
-
-	String StringFactory::getString(){
-	
-	}
 	
 	String StringFactory::getString(){
 		String result = StringWX();

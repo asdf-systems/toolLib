@@ -2,12 +2,13 @@
 
 TARG=testCase
 CPPFILES=\
-	$(TARG).cpp\
-	String.cpp\
-	DebugInfo.cpp \
 	StringFactory.cpp \
-	StringWX.cpp 
-
+	StringWX.cpp \
+	String.cpp \
+	$(TARG).cpp\
+	#String.cpp\
+	#DebugInfo.cpp \
+	
 ## Here be dragons #################
 
 CXX=colorgcc

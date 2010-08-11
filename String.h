@@ -1,23 +1,33 @@
 #ifndef ASDF_STRING_H
 #define ASDF_STRING_H
 
-#include "DebugInfo.h"
-#include "DebugAble.h"
-#include "ReadWriter.h"
+//#include "DebugInfo.h"
+//#include "DebugAble.h"
+//#include "ReadWriter.h"
+#include <vector>
 
 namespace asdf{
 
-// Prototypen
-class DebugInfo;
+	// Prototypen
+	//class DebugInfo;
+	//class DebugAble;
+	//class ReadWriter;
 	
-	virtual class String : public DebugAble, ReaderWriter{
-		virtual void split(vector<String>& result);
-		virtual bool match(String pattern);
-		virtual void replace(String replace, String replaced, String& result);
-		virtual void clear();
-		virtual int length();
-		virtual String operator+(String& operand);
-		virtual char* toCStr();
+	class String { //: public DebugAble, ReaderWriter{
+		public:
+			//virtual String::String();
+			//virtual String::String(const char* value);
+			virtual ~String();
+			virtual void split(String string, String pattern, std::vector<String>& result);
+			virtual bool match(String pattern);
+			virtual void replace(String replace, String replaced, String& result);
+			virtual void subString(int start, int end, String& result);
+			virtual void clear();
+			virtual int length();
+			virtual String operator+(String& operand);
+			virtual String operator+=(String& operand);
+			virtual bool operator==(String& operand);
+			virtual const char* toCStr();
 		
 	};
 }

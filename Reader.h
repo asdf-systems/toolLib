@@ -5,7 +5,7 @@
 
 namespace asdf{
 	
-	virtual class Reader{
+	class Reader{
 		virtual void read(String& value) = 0;
 	};
 }

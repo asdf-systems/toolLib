@@ -3,6 +3,7 @@
 
 #include "Reader.h"
 #include "Writer.h"
+#include "String.h"
 
 namespace asdf{
 	

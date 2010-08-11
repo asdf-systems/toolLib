@@ -1,6 +1,8 @@
 #include <iostream>
 #include "SharedPointer.h"
 #include "LocalPointer.h"
+#include "String.h"
+#include "StringFactory.h"
 
 
 void function1(asdf::SharedPointer<int>* test){
@@ -39,10 +41,14 @@ void testLocalPointer(){
 	int* i2 = new int(5);
 	asdf::LocalPointer<int> lp1(i2);
 }
+void testString(){
+	asdf::String testString = asdf::StringFactory::getString("test");
+}
 int main(){
 	
 	//testSharedPointer();
 	//testLocalPointer();
+	testString();
 	
 	
 	

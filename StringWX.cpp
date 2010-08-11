@@ -1,32 +1,38 @@
 #include "StringWX.h"
+#include "StringFactory.h"
 namespace asdf{
 	
 	StringWX::StringWX(){
 		mValue = wxEmptyString;
-		DebugInfo.setClassname("StringWX");
-		DebugInfo.setSuccess(true);
-	}
-	StringWX::StringWX(char* value) {
-		mValue = wxString(wxT(value));
-		DebugInfo.setClassname("StringWX");
-		DebugInfo.setSuccess(true);
-	}
-	StringWX::~StringWX(){
+		//mDebugInfo.setClassname("StringWX");
+		//mDebugInfo.setSuccess(true);
 	}
 	
-	void StringWX::split(vector<String>& result){
+	StringWX::StringWX(const char* value) {
+		//mValue = wxString(_(value));
+		mValue = wxString (value, wxConvUTF8);
+		//mDebugInfo.setClassname("StringWX");
+		//mDebugInfo.setSuccess(true);
+	}
+	
+	StringWX::~StringWX(){
+	
+	}
+	
+	void StringWX::split(String string,String pattern, std::vector<String>& result){
 		
-		mDebugInfo.setFunctionName("Split");
+		//mDebugInfo.setFunctionName("Split");
 		
-		String tmp = StringFactory::getString(wxEmptyString);
-		String save = StringFactory::getString(wxEmptyString);
+		String tmp = StringFactory::getString();
+		String save = StringFactory::getString();
 		int fst = 0;
 
 		for (int i = 0; i < string.length(); i++)
 		{
-			tmp = string.SubString(fst,fst);
 			
-			if (tmp == sign)
+			string.subString(fst,fst, tmp);
+			
+			if (tmp == pattern)
 			{
 				result.push_back(save);
 				save.clear();
@@ -43,35 +49,48 @@ namespace asdf{
 		
 	}
 	
+	void StringWX::subString(int start, int end, String& result){
+		wxString tmp = mValue.SubString(start, end);
+		result = StringWX(tmp.mb_str());
+	}
 	int StringWX::length(){
 		mValue.Len();
 	}
+	
 	bool StringWX::match(String pattern){
-		wxString tmp(pattern.toWxString());
+		wxString tmp(pattern.toCStr(), wxConvUTF8);
 		return mValue.Matches(tmp);
 	}
 	
-	wxString StringWX::toWxString(String value){
-		return (wxString(value.toCStr()));
-	}
 	void StringWX::replace(String replace, String replaced, String& result){
 	
 		
 	}
 	bool StringWX::succeeded(){
-		return DebugInfo.getSuccess();
+		return true;
+		//return DebugInfo.getSuccess();
 	}
-	void getErrorValues(DebugInfo& result);
+	
+	//void getErrorValues(DebugInfo& result);
 
 	void StringWX::clear(){
 		mValue.clear();
 	}
 	
 	String StringWX::operator+(String& operand){
-		return (mValue + operand);
+		wxString tmp = (mValue + wxString(operand.toCStr(), wxConvUTF8));
+		const char* tchar = tmp.mb_str();
+		return  StringWX(tchar);
+	}
+	String StringWX::operator+=(String& operand){
+		mValue =  (mValue + wxString(operand.toCStr(), wxConvUTF8));
 	}
 	
-	char* StringWX::toCStr(){
+	bool StringWX::operator==(String& operand){
+		mValue == wxString(operand.toCStr(), wxConvUTF8);
+	}
+	
+	const char* StringWX::toCStr(){
 		return mValue.mb_str();
 	}
 } // namespace asdf

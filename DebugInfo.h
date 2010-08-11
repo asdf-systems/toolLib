@@ -5,6 +5,7 @@
 
 namespace asdf{
 
+	class String;
 	class DebugInfo{
 		private:
 			ReaderWriter& mOutput;
@@ -25,4 +26,4 @@ namespace asdf{
 	};
 }
 
-#endif // Headergiard
+#endif // Headerguard
