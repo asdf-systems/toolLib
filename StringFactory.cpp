@@ -4,12 +4,12 @@
 namespace asdf{
 	
 	String StringFactory::getString(){
-		String result = StringWX();
-		return result;
+		
+		return StringWX();
 	}
 	
 	String StringFactory::getString(char* value){
-		String result = StringWX(value);
-		return result;
+		
+		return StringWX(value);
 	}
 } // namespace asdf
