@@ -5,7 +5,7 @@
 #include "StringFactory.h"
 
 
-void function1(asdf::SharedPointer<int>* test){
+/*void function1(asdf::SharedPointer<int>* test){
 	int* x = test->get();
 	std::cout << "funcion1 : " << *x << std::endl;
 	test->release();
@@ -40,13 +40,17 @@ void testSharedPointer(){
 void testLocalPointer(){
 	int* i2 = new int(5);
 	asdf::LocalPointer<int> lp1(i2);
-}
+}*/
 void testString(){
 	std::cout << "Start Test String" << std::endl;
 	asdf::SharedPointer<asdf::String>* testString = asdf::StringFactory::getString("test");
-	asdf::String* test = testString->get();
+	asdf::SharedPointer<asdf::String>* testString2 = asdf::StringFactory::getString("testString2");
+	asdf::String& test = testString->get();
+	asdf::String& test2 = testString2->get();
 	std::cout << "TestString name:" << std::endl;
-	std::cout << test->toCStr() << std::endl;
+	std::cout << test.toCStr() << std::endl;
+	std::vector<asdf::String>* vector = new std::vector<asdf::String>();
+	test.split(test2, test2, *vector);
 	testString->release();
 }
 int main(){

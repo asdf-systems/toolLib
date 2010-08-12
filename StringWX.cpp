@@ -19,8 +19,10 @@ namespace asdf{
 	
 	}
 	
-	void StringWX::split(String string,String pattern, std::vector<String>& result){
+	void StringWX::split(String& string, String& pattern, std::vector<String>& result){
 		
+		std::cout << "Split" << std::endl;
+		std::cout << string.toCStr() << std::endl;
 		//mDebugInfo.setFunctionName("Split");
 		
 		/*String tmp = StringFactory::getString();

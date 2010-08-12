@@ -25,9 +25,9 @@ namespace asdf{
 				}
 			}
 			
-			T* get(){
+			T& get(){
 				mRefCounter++;
-				return mObject;
+				return *mObject;
 			}
 			
 			void release(){

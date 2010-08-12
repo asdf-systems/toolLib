@@ -19,7 +19,7 @@ namespace asdf{
 			//String();
 			//String(const char* value);
 			//~String();
-			virtual void split(String string, String pattern, std::vector<String>& result){};
+			virtual void split(String& string, String& pattern, std::vector<String>& result){std::cout << "ERROR SPLIT" << std::endl;};
 			virtual bool match(String pattern){};
 			virtual void replace(String replace, String replaced, String& result){};
 			virtual void subString(int start, int end, String& result){};

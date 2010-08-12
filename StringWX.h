@@ -19,7 +19,7 @@ namespace asdf{
 			StringWX();
 			StringWX(const char* value);
 			~StringWX();
-			void split(String string, String pattern, std::vector<String>& result);
+			virtual void split(String& string, String& pattern, std::vector<String>& result);
 			void subString(int start, int end, String& result);
 			bool match(String pattern);
 			void replace(String replace, String replaced, String& result);
