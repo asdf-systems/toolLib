@@ -23,7 +23,7 @@ namespace asdf{
 		
 		//mDebugInfo.setFunctionName("Split");
 		
-		String tmp = StringFactory::getString();
+		/*String tmp = StringFactory::getString();
 		String save = StringFactory::getString();
 		int fst = 0;
 
@@ -44,7 +44,7 @@ namespace asdf{
 			fst++; 
 		}
 		if(save.length() > 0)
-			result.push_back(save);
+			result.push_back(save);*/
 	
 		
 	}
@@ -91,6 +91,8 @@ namespace asdf{
 	}
 	
 	const char* StringWX::toCStr(){
+		std::cout << "StringWX: Function:  toCStr" << std::endl;
+		std::cout << "XX" << mValue.mb_str() << "XX" << std::endl;
 		return mValue.mb_str();
 	}
 } // namespace asdf

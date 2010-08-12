@@ -42,13 +42,20 @@ void testLocalPointer(){
 	asdf::LocalPointer<int> lp1(i2);
 }
 void testString(){
-	asdf::String testString = asdf::StringFactory::getString("test");
+	std::cout << "Start Test String" << std::endl;
+	asdf::SharedPointer<asdf::String>* testString = asdf::StringFactory::getString("test");
+	asdf::String* test = testString->get();
+	std::cout << "TestString name:" << std::endl;
+	std::cout << test->toCStr() << std::endl;
+	testString->release();
 }
 int main(){
 	
 	//testSharedPointer();
 	//testLocalPointer();
+	std::cout << "Start Testcase" << std::endl;
 	testString();
+	std::cout << "End Testcase" << std::endl;
 	
 }
 

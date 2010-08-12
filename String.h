@@ -5,6 +5,7 @@
 //#include "DebugAble.h"
 //#include "ReadWriter.h"
 #include <vector>
+#include <iostream>
 
 namespace asdf{
 

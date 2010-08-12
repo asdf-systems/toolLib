@@ -1,3 +1,6 @@
+#ifndef ASDF_SHAREDPOINTER_H
+#define ASDF_SHAREDPOINTER_H
+
 #include <iostream>
 
 namespace asdf{
@@ -9,7 +12,7 @@ namespace asdf{
 		public:
 			SharedPointer(T* object){
 				mObject = object;
-				mRefCounter = 1;
+				mRefCounter = 0;
 				std::cout << "Create shared Pointer" << std::endl;		
 			}
 			
@@ -41,3 +44,5 @@ namespace asdf{
 			
 	};
 }
+
+#endif // Headerguard
