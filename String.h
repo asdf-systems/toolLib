@@ -6,6 +6,7 @@
 //#include "ReadWriter.h"
 #include <vector>
 #include <iostream>
+#include <string>
 
 namespace asdf{
 
@@ -26,9 +27,10 @@ namespace asdf{
 			virtual void clear(){};
 			virtual int length(){};
 			virtual String operator+(String& operand){};
-			virtual String operator+=(String& operand){};
+			virtual void operator+=(String& operand){};
+			virtual void operator=(String& operand){};
 			virtual bool operator==(String& operand){};
-			virtual const char* toCStr(){};
+			virtual std::string toCStr(){std::cout << "ERROR TOCSTR()" << std::endl;};
 		
 	};
 }

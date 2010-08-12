@@ -4,6 +4,7 @@
 #include <wx/wx.h>
 #include <vector>
 #include "String.h"
+#include <string>
 
 namespace asdf{
 
@@ -14,10 +15,12 @@ namespace asdf{
 			// Member
 			wxString mValue;
 			// Methods
-			wxString toWxString(String value);
+			wxString toWxStr(String& value);
+			StringWX toString(wxString);
+						
 		public:
 			StringWX();
-			StringWX(const char* value);
+			StringWX(std::string value);
 			~StringWX();
 			virtual void split(String& string, String& pattern, std::vector<String>& result);
 			void subString(int start, int end, String& result);
@@ -27,9 +30,10 @@ namespace asdf{
 			//void getErrorValues(DebugInfo& result);
 			void clear();
 			int length();
-			const char* toCStr();
+			std::string toCStr();
 			String operator+(String& operand);
-			String operator+=(String& operand);
+			void operator+=(String& operand);
+			void operator=(String& operand);
 			bool operator==(String& operand);
 	};
 }

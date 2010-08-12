@@ -45,13 +45,19 @@ void testString(){
 	std::cout << "Start Test String" << std::endl;
 	asdf::SharedPointer<asdf::String>* testString = asdf::StringFactory::getString("test");
 	asdf::SharedPointer<asdf::String>* testString2 = asdf::StringFactory::getString("testString2");
+	asdf::SharedPointer<asdf::String>* patternSP = asdf::StringFactory::getString("S");
 	asdf::String& test = testString->get();
 	asdf::String& test2 = testString2->get();
+	asdf::String& pattern = patternSP->get();
 	std::cout << "TestString name:" << std::endl;
 	std::cout << test.toCStr() << std::endl;
 	std::vector<asdf::String>* vector = new std::vector<asdf::String>();
-	test.split(test2, test2, *vector);
+	
+	test.split(test2, pattern, *vector);
+	std::cout << vector->size() << std::endl;
 	testString->release();
+	testString2->release();
+	patternSP->release();
 }
 int main(){
 	

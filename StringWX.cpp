@@ -8,9 +8,9 @@ namespace asdf{
 		//mDebugInfo.setSuccess(true);
 	}
 	
-	StringWX::StringWX(const char* value) {
+	StringWX::StringWX(std::string value) {
 		//mValue = wxString(_(value));
-		mValue = wxString (value, wxConvUTF8);
+		mValue = wxString (value.c_str(), wxConvUTF8);
 		//mDebugInfo.setClassname("StringWX");
 		//mDebugInfo.setSuccess(true);
 	}
@@ -25,43 +25,48 @@ namespace asdf{
 		std::cout << string.toCStr() << std::endl;
 		//mDebugInfo.setFunctionName("Split");
 		
-		/*String tmp = StringFactory::getString();
-		String save = StringFactory::getString();
+		SharedPointer<String>* tmpSP = StringFactory::getString();
+		String& tmp = tmpSP->get();
+		wxString save = wxEmptyString;
 		int fst = 0;
 
 		for (int i = 0; i < string.length(); i++)
 		{
 			
-			string.subString(fst,fst, tmp);
-			
+			string.subString(fst,fst,tmp);
+				
 			if (tmp == pattern)
 			{
-				result.push_back(save);
-				save.clear();
+				result.push_back(toString(save));
+				save.Clear();
 
 			}
 			else
-				save += tmp;
+				save += toWxStr(tmp);
 			
 			fst++; 
 		}
 		if(save.length() > 0)
-			result.push_back(save);*/
-	
+			result.push_back(toString(save));
+		
+		tmpSP->release();
 		
 	}
 	
 	void StringWX::subString(int start, int end, String& result){
 		wxString tmp = mValue.SubString(start, end);
-		result = StringWX(tmp.mb_str());
+		StringWX tmp2 = toString(tmp);
+		result = tmp2;
+		//std::cout << "temp:" << result.toCStr() << std::endl;		
+		
 	}
 	int StringWX::length(){
-		mValue.Len();
+		return mValue.Len();
 	}
 	
 	bool StringWX::match(String pattern){
-		wxString tmp(pattern.toCStr(), wxConvUTF8);
-		return mValue.Matches(tmp);
+		
+		return mValue.Matches(toWxStr(pattern));
 	}
 	
 	void StringWX::replace(String replace, String replaced, String& result){
@@ -80,21 +85,31 @@ namespace asdf{
 	}
 	
 	String StringWX::operator+(String& operand){
-		wxString tmp = (mValue + wxString(operand.toCStr(), wxConvUTF8));
-		const char* tchar = tmp.mb_str();
-		return  StringWX(tchar);
+		wxString tmp = (mValue + toWxStr(operand));
+		return  toString(tmp);
 	}
-	String StringWX::operator+=(String& operand){
-		mValue =  (mValue + wxString(operand.toCStr(), wxConvUTF8));
+	void StringWX::operator+=(String& operand){
+		mValue =  (mValue + toWxStr(operand));
 	}
 	
 	bool StringWX::operator==(String& operand){
-		mValue == wxString(operand.toCStr(), wxConvUTF8);
+		mValue == toWxStr(operand);
 	}
 	
-	const char* StringWX::toCStr(){
-		std::cout << "StringWX: Function:  toCStr" << std::endl;
-		std::cout << "XX" << mValue.mb_str() << "XX" << std::endl;
-		return mValue.mb_str();
+	void StringWX::operator=(String& operand){
+		mValue = toWxStr(operand);
+	}
+	
+	std::string StringWX::toCStr(){
+		return std::string(mValue.mb_str());;
+		
+	}
+	
+	wxString StringWX::toWxStr(String& value){
+		return wxString(value.toCStr().c_str(), wxConvUTF8);
+	}
+	
+	StringWX StringWX::toString(wxString value){
+		return StringWX(std::string(value.mb_str()));
 	}
 } // namespace asdf
