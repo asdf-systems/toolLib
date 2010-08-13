@@ -1,3 +1,6 @@
+namespace asdf {
+	class StringFactory;
+}
 #ifndef ASDF_STRINGFACTORY_H
 #define ASDF_STRINGFACTORY_H
 

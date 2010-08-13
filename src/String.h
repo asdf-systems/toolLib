@@ -1,3 +1,6 @@
+namespace asdf {
+	class String;
+}
 #ifndef ASDF_STRING_H
 #define ASDF_STRING_H
 

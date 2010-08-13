@@ -1,3 +1,6 @@
+namespace asdf {
+	class StringWX;
+}
 #ifndef ASDF_STRINGWX_H
 #define ASDF_STRINGWX_H
 
