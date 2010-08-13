@@ -24,7 +24,8 @@ namespace asdf {
 					container = new Container();
 					container->ptr = ptr;
 					container->count = 1;
-				}
+				} else
+					container = NULL;
 			}
 
 			/**
