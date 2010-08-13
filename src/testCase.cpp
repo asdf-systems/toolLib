@@ -1,49 +1,51 @@
 #include <iostream>
-#include "SharedPointer.h"
-#include "LocalPointer.h"
+#include "SmartPointer.h"
 #include "String.h"
 #include "StringFactory.h"
 
+typedef void (*testFunction)(void);
 
-/*void function1(asdf::SharedPointer<int>* test){
-	int* x = test->get();
-	std::cout << "funcion1 : " << *x << std::endl;
-	test->release();
-	
+void testSmartPointer_subfunc_1(int* ptr) {
+	printf("\tAutocast gives: %d\n", *ptr);
 }
 
-void function2(asdf::SharedPointer<int>* test){
-	int* x = test->get();
-	std::cout << "funcion2 : " << *x << std::endl;
-	test->release();
+void testSmartPointer_subfunc_2(asdf::SPtr<int>& a) {
+	printf("\tRepointing ptr1\n");
+	a = asdf::SPtr<int>(new int(4));
 }
 
-void errFunction(asdf::SharedPointer<int>* test){
-	int* x = test->get();
-	std::cout << "funcion2" << *x << std::endl;
+void testSmartPointer() {
+	asdf::SmartPointer<int> ptr1(new int(5));
+	printf("ptr1: Pointer value: %d, Count: %d\n", *ptr1, ptr1.getReferenceCount());
+
+	printf("\t Copying ptr1 into ptr2\n");
+	asdf::SPtr<int> ptr2 = asdf::SPtr<int>(ptr1);
+	printf("ptr2: Pointer value: %d, Count: %d\n", *ptr2, ptr2.getReferenceCount());
+
+	testSmartPointer_subfunc_1(ptr1);
+	testSmartPointer_subfunc_2(ptr1);
+
+	printf("\t Copying ptr2 into ptr3\n");
+	asdf::SPtr<int> ptr3 = asdf::SPtr<int>(ptr2);
+
+	printf("ptr1: Pointer value: %d, Count: %d\n", *ptr1, ptr1.getReferenceCount());
+	printf("ptr2: Pointer value: %d, Count: %d\n", *ptr2, ptr2.getReferenceCount());
+	printf("ptr3: Pointer value: %d, Count: %d\n", *ptr2, ptr2.getReferenceCount());
 }
 
-void testSharedPointer(){
-
-		int* i = new int(5);
-	asdf::SharedPointer<int>* test = new asdf::SharedPointer<int>(i);
-	function1(test);
-	std::cout << "Testcase proper i: " << *i << std::endl; // no error
-	function2(test);
-	std::cout << "Testcase error i: " << *i << std::endl; // error - already deleted
-	test->release(); // no error
-	asdf::SharedPointer<int>* test2 = new asdf::SharedPointer<int>(i);
-	errFunction(test2);
-	test2->release(); // error
-}
-
-void testLocalPointer(){
-	int* i2 = new int(5);
-	asdf::LocalPointer<int> lp1(i2);
-}*/
 void testString(){
+	asdf::SPtr<asdf::String> test = asdf::StringFactory::createString("test 123");
+	const char* b = test->c_str();
+	printf("String: \"%s\"\n\t", b);
+	for(int i = 0; i < test->length(); i++) {
+		printf("%02x ", b[i]);
+	}
+	printf("\n");
+
+	/*
 	std::cout << "Start Test String" << std::endl;
-	asdf::SharedPointer<asdf::String>* testString = asdf::StringFactory::getString("test");
+	asdf::SPtr<asdf::String> testString = asdf::StringFactory::createString("test");
+	printf("Count: %d\n", testString.getReferenceCount());
 	asdf::SharedPointer<asdf::String>* testString2 = asdf::StringFactory::getString("testString2");
 	asdf::SharedPointer<asdf::String>* patternSP = asdf::StringFactory::getString("S");
 	asdf::String& test = testString->get();
@@ -57,15 +59,22 @@ void testString(){
 	std::cout << vector->size() << std::endl;
 	testString->release();
 	testString2->release();
-	patternSP->release();
+	patternSP->release();*/
 }
+
+testFunction testFunctions[] = {
+	&testSmartPointer,
+	&testString,
+	NULL
+};
+
 int main(){
-	
-	//testSharedPointer();
-	//testLocalPointer();
-	std::cout << "Start Testcase" << std::endl;
-	testString();
-	std::cout << "End Testcase" << std::endl;
-	
+	int i = 0;
+	while(testFunctions[i]) {
+		std::cout << "Start Testcase #"  << (i+1) << std::endl;
+		testFunctions[i]();
+		std::cout << "End Testcase" << std::endl << std::endl;
+		i++;
+	}
 }
 
