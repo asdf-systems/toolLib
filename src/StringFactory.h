@@ -2,14 +2,14 @@
 #define ASDF_STRINGFACTORY_H
 
 #include "String.h"
-#include "SharedPointer.h"
+#include "SmartPointer.h"
 
 namespace asdf{
 	
 	class StringFactory{
 		public:
-			static SharedPointer<String>* getString();
-			static SharedPointer<String>* getString(const char* value);
+			static SPtr<String> createString();
+			static SPtr<String> createString(const char* value);
 	};
 }
 #endif // Headerguard

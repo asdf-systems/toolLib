@@ -3,13 +3,11 @@
 
 namespace asdf{
 	
-	SharedPointer<String>* StringFactory::getString(){
-		SharedPointer<String>* tmp = new SharedPointer<String>(new StringWX());
-		return tmp;
+	SPtr<String> StringFactory::createString(){
+		return SPtr<String>(dynamic_cast<String*>(new StringWX()));
 	}
 	
-	SharedPointer<String>* StringFactory::getString(const char* value){
-		SharedPointer<String>* tmp = new SharedPointer<String>(new StringWX(value));
-		return tmp;
+	SPtr<String> StringFactory::createString(const char* value){
+		return SPtr<String>(dynamic_cast<String*>(new StringWX(value)));
 	}
 } // namespace asdf

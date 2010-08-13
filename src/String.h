@@ -7,6 +7,7 @@
 #include <vector>
 #include <iostream>
 #include <string>
+#include "SmartPointer.h"
 
 namespace asdf{
 
@@ -19,19 +20,20 @@ namespace asdf{
 		public:
 			//String();
 			//String(const char* value);
-			//~String();
-			virtual void split(String& string, String& pattern, std::vector<String>& result){std::cout << "ERROR SPLIT" << std::endl;};
-			virtual bool match(String pattern){};
-			virtual void replace(String replace, String replaced, String& result){};
-			virtual void subString(int start, int end, String& result){};
-			virtual void clear(){};
-			virtual int length(){};
-			virtual String operator+(String& operand){};
-			virtual void operator+=(String& operand){};
-			virtual void operator=(String& operand){};
-			virtual bool operator==(String& operand){};
-			virtual std::string toCStr(){std::cout << "ERROR TOCSTR()" << std::endl;};
-		
+			//virtual ~String() = 0;
+			//virtual void split(String* string, String* pattern, SPtr<String> result) = 0;
+			//virtual bool match(String* pattern) = 0;
+			//virtual void replace(String* replace, String* replaced, SPtr<String> result) = 0;
+			virtual void subString(int start, int end, SPtr<String>& result) = 0;
+			//virtual void clear() = 0;
+			virtual int length() = 0;
+			//virtual String operator+(String* operand) = 0;
+			//virtual void operator+=(String* operand) = 0;
+			//virtual void operator=(String* operand) = 0;
+			//virtual bool operator==(String* operand) = 0;
+			virtual char* c_str() = 0;
+		private:
+			int dummy;
 	};
 }
 
