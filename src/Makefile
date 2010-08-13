@@ -1,39 +1,40 @@
-## No dragons yes ##################
+## No dragons yet ##################
 
 TARG=testCase
 CPPFILES=\
-	StringFactory.cpp \
-	StringWX.cpp \
 	$(TARG).cpp\
-	#String.cpp \
-	#String.cpp\
-	#DebugInfo.cpp \
+	#StringFactory.cpp \
+	#StringWX.cpp \
 	
-## Here be dragons #################
 
-CXX=colorgcc
-CXXFLAGS=-O2 -Wall -pg `wx-config --cxxflags` -ggdb 
-LDFLAGS := -pg `wx-config --libs media core base net` -L/usr/local/lib -lmysqlpp -lmysqlclient -lnsl -lz -lm
-INCLUDES=-I.
-LIBS=
+CXX = g++
+CXXFLAGS += -O2 -Wall
+LDFLAGS +=
 
-## Here be even more dragons #######
+## Enable WX
+CXXFLAGS += `wx-config --cxxflags`
+LDFLAGS += `wx-config --libs core base net`
+
+## Enable MySQL
+#LDFLAGS += -lmysqlpp -lmysqlclient
+
+## Here be dragons #######
 
 OBJFILES = $(CPPFILES:%.cpp=%.o)
 
 all: obj link
 
 debug:
-	CXXADDFLAGS="-DDEBUG -ggdb" make all
+	CXXFLAGS="${CXXFLAGS} -DDEBUG -ggdb -pg" make all
 
 obj:
-	$(CXX) $(CXXFLAGS) $(CXXADDFLAGS) $(INCLUDES) -c $(CPPFILES) 
+	$(CXX) $(CXXFLAGS) -c $(CPPFILES)
 
 link:
-	$(CXX) $(CXXFLAGS) $(CXXADDFLAGS) $(LIBS) $(OBJFILES) $(LDFLAGS)  -o $(TARG)
+	$(CXX) $(CXXFLAGS) $(LDFLAGS) $(OBJFILES) -o $(TARG)
 
 clean:
-	-@rm *.o $(TARG) *~ 
+	-@rm -f *.o $(TARG) *~
 
 run:
 	./$(TARG)
