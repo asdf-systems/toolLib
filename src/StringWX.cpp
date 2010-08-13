@@ -22,6 +22,24 @@ namespace asdf{
 		return mValue.Length();
 	}
 
+	void StringWX::replace(String* replace, String* replaced, SPtr<String>& result) {
+		// We make a copy of mValue because wxString::Replace
+		// does not. It works directly on the wxString.
+		// DO NOT MERGE THESE LINES. It breaks stuff...
+		// GCC is just too eager with optimizing
+		wxString copy(mValue);
+		SPtr<StringWX> sop1 = String2StringWX(replace);
+		SPtr<StringWX> sop2 = String2StringWX(replaced);
+		const wxChar* op1 = sop1->c_strWX();
+		const wxChar* op2 = sop2->c_strWX();
+		copy.Replace(op1, op2);
+		result = SPtr<String>(
+			dynamic_cast<String*>(
+				new StringWX(copy)
+				)
+			);
+	}
+
 	void StringWX::subString(int start, int end, SPtr<String>& result) {
 		result = SPtr<String>(
 			dynamic_cast<String*>(

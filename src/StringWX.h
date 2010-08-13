@@ -27,7 +27,7 @@ namespace asdf{
 			//void split(String* string, String* pattern, SPtr<String> result);
 			void subString(int start, int end, SPtr<String>& result);
 			//bool match(String pattern);
-			//void replace(String replace, String replaced, String& result);
+			void replace(String* replace, String* replaced, SPtr<String>& result);
 			//bool succeeded();
 			////void getErrorValues(DebugInfo& result);
 			//void clear();

@@ -35,8 +35,9 @@ void testSmartPointer() {
 
 void testString(){
 	// String creation test
-	asdf::SPtr<asdf::String> testStr = asdf::StringFactory::createString("test 123 abc");
-	const char* b = testStr->c_str();
+	asdf::SPtr<asdf::String> testStr = asdf::StringFactory::createString("test 123 xyz");
+	asdf::SPtr<char> p = testStr->c_str();
+	char *b = p.get();
 	printf("String: \"%s\"\n\t", b);
 	for(int i = 0; i < testStr->length(); i++) {
 		printf("%02x ", b[i]);
@@ -46,25 +47,15 @@ void testString(){
 	// Substring test
 	asdf::SPtr<asdf::String> testSubStr(NULL);
 	testStr->subString(0, 7, testSubStr);
-	printf("Substring: \"%s\"\n", testSubStr->c_str());
-	/*
-	std::cout << "Start Test String" << std::endl;
-	asdf::SPtr<asdf::String> testString = asdf::StringFactory::createString("test");
-	printf("Count: %d\n", testString.getReferenceCount());
-	asdf::SharedPointer<asdf::String>* testString2 = asdf::StringFactory::getString("testString2");
-	asdf::SharedPointer<asdf::String>* patternSP = asdf::StringFactory::getString("S");
-	asdf::String& test = testString->get();
-	asdf::String& test2 = testString2->get();
-	asdf::String& pattern = patternSP->get();
-	std::cout << "TestString name:" << std::endl;
-	std::cout << test.toCStr() << std::endl;
-	std::vector<asdf::String>* vector = new std::vector<asdf::String>();
-	
-	test.split(test2, pattern, *vector);
-	std::cout << vector->size() << std::endl;
-	testString->release();
-	testString2->release();
-	patternSP->release();*/
+	printf("Substring: \"%s\"\n", testSubStr->c_str().get());
+
+	// Replace test
+	asdf::SPtr<asdf::String> testRepStr(NULL);
+	testStr->replace(
+			asdf::StringFactory::createString("xyz"),
+			asdf::StringFactory::createString("abc"),
+			testRepStr);
+	printf("Replaced String: \"%s\"\n", testRepStr->c_str().get());
 }
 
 testFunction testFunctions[] = {
