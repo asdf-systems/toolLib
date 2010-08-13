@@ -7,6 +7,7 @@ namespace asdf {
 #include <wx/wx.h>
 #include <vector>
 #include <string>
+#include <cstring>
 #include "String.h"
 #include "SmartPointer.h"
 
@@ -16,6 +17,8 @@ namespace asdf{
 			// Member
 			wxString mValue;
 			// Methods
+			static SPtr<StringWX> String2StringWX(String* p);
+			const wxChar* c_strWX();
 		public:
 			StringWX();
 			StringWX(const char* val);
@@ -29,7 +32,7 @@ namespace asdf{
 			////void getErrorValues(DebugInfo& result);
 			//void clear();
 			int length();
-			char* c_str();
+			SPtr<char> c_str();
 			//String operator+(String& operand);
 			//void operator+=(String& operand);
 			//void operator=(String& operand);

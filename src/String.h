@@ -34,7 +34,7 @@ namespace asdf{
 			//virtual void operator+=(String* operand) = 0;
 			//virtual void operator=(String* operand) = 0;
 			//virtual bool operator==(String* operand) = 0;
-			virtual char* c_str() = 0;
+			virtual SPtr<char> c_str() = 0;
 		private:
 			int dummy;
 	};
