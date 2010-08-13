@@ -8,7 +8,7 @@ namespace asdf {
 #include "SmartPointer.h"
 
 namespace asdf{
-	
+
 	class StringFactory{
 		public:
 			static SPtr<String> createString();

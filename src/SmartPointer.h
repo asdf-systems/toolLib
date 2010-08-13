@@ -92,6 +92,13 @@ namespace asdf {
 			}
 
 			/**
+			 * Array index operator for convenient array handling
+			 */
+			X& operator[](int cnt) {
+				return container->ptr[cnt];
+			}
+
+			/**
 			 * Cast operator for convenient parameter passing
 			 */
 			operator X*() {
@@ -117,6 +124,8 @@ namespace asdf {
 			}
 
 		private:
+			// Nested classes ain't pretty, but otherwise template
+			// X would be unaccessible.
 			class Container {
 				public:
 					X *ptr;
