@@ -34,14 +34,19 @@ void testSmartPointer() {
 }
 
 void testString(){
-	asdf::SPtr<asdf::String> test = asdf::StringFactory::createString("test 123");
-	const char* b = test->c_str();
+	// String creation test
+	asdf::SPtr<asdf::String> testStr = asdf::StringFactory::createString("test 123 abc");
+	const char* b = testStr->c_str();
 	printf("String: \"%s\"\n\t", b);
-	for(int i = 0; i < test->length(); i++) {
+	for(int i = 0; i < testStr->length(); i++) {
 		printf("%02x ", b[i]);
 	}
 	printf("\n");
 
+	// Substring test
+	asdf::SPtr<asdf::String> testSubStr(NULL);
+	testStr->subString(0, 7, testSubStr);
+	printf("Substring: \"%s\"\n", testSubStr->c_str());
 	/*
 	std::cout << "Start Test String" << std::endl;
 	asdf::SPtr<asdf::String> testString = asdf::StringFactory::createString("test");

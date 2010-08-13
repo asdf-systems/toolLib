@@ -3,8 +3,8 @@
 TARG=testCase
 CPPFILES=\
 	$(TARG).cpp\
-	#StringFactory.cpp \
-	#StringWX.cpp \
+	StringFactory.cpp \
+	StringWX.cpp \
 	
 
 CXX = g++
