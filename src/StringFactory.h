@@ -10,6 +10,7 @@ namespace asdf{
 		public:
 			static SPtr<String> createString();
 			static SPtr<String> createString(const char* value);
+			static SPtr<String> copyString(String* value);
 	};
 }
 #endif // Headerguard

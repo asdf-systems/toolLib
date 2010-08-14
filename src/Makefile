@@ -5,6 +5,7 @@ CPPFILES=\
 	$(TARG).cpp\
 	StringFactory.cpp \
 	StringWX.cpp \
+	DebugInfo.cpp \
 	
 
 CXX = g++

@@ -6,10 +6,9 @@
 namespace asdf{
 
 	class DebugAble{
-		private:
-			DebugInfo	mDebugInfo;
+		protected:
+			DebugInfo mDebugInfo;
 		public:
-			virtual bool succeeded() = 0;
 			virtual DebugInfo getErrorValues() = 0;
 		
 	};

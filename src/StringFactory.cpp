@@ -10,4 +10,9 @@ namespace asdf{
 	SPtr<String> StringFactory::createString(const char* value){
 		return SPtr<String>(dynamic_cast<String*>(new StringWX(value)));
 	}
+
+	SPtr<String> StringFactory::copyString(String* str) {
+		const char* cstr = str->c_str();
+		return StringFactory::createString(cstr);
+	}
 } // namespace asdf
