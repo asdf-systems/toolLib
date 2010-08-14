@@ -10,8 +10,8 @@ namespace asdf {
 	/**
 	 * @brief SmartPointer is a substitute for raw pointers to help prevent
 	 * memory leaks.
-	 * A SmartPointer frees the contained raw pointer automatically while 
-	 * destroying itself, if it is the last SmartPointer using that particular 
+	 * A SmartPointer frees the contained raw pointer automatically while
+	 * destroying itself, if it is the last SmartPointer using that particular
 	 * raw pointer.
 	 */
 	template <class X> class SmartPointer {
@@ -21,11 +21,11 @@ namespace asdf {
 			 */
 			SmartPointer(X *ptr = 0) {
 				if(ptr) {
-					container = new Container();
-					container->ptr = ptr;
-					container->count = 1;
+					mContainer = new Container();
+					mContainer->ptr = ptr;
+					mContainer->count = 1;
 				} else
-					container = NULL;
+					mContainer = NULL;
 			}
 
 			/**
@@ -33,9 +33,9 @@ namespace asdf {
 			 * object as ptr.
 			 */
 			SmartPointer(const SmartPointer<X>& ptr) {
-				container = ptr.container;
-				if(container)
-					container->count++;
+				mContainer = ptr.mContainer;
+				if(mContainer)
+					mContainer->count++;
 			}
 
 			/**
@@ -56,9 +56,9 @@ namespace asdf {
 			 */
 			SmartPointer& operator=(SmartPointer ptr) {
 				release(); // Release old container
-				container = ptr.container; // Obtain new one
-				if(container)
-					container->count++;
+				mContainer = ptr.mContainer; // Obtain new one
+				if(mContainer)
+					mContainer->count++;
 				return *this;
 			}
 
@@ -68,9 +68,9 @@ namespace asdf {
 			SmartPointer& operator=(SmartPointer& ptr) {
 				if(&ptr != this) {
 					release(); // Release old container
-					container = ptr.container; // Obtain new one
-					if(container)
-						container->count++;
+					mContainer = ptr.mContainer; // Obtain new one
+					if(mContainer)
+						mContainer->count++;
 				}
 				return *this;
 			}
@@ -80,7 +80,7 @@ namespace asdf {
 			 * like a raw pointer.
 			 */
 			X& operator*() {
-				return *container->ptr;
+				return *mContainer->ptr;
 			}
 
 			/**
@@ -88,14 +88,14 @@ namespace asdf {
 			 * like a raw pointer.
 			 */
 			X* operator->() {
-				return container->ptr;
+				return mContainer->ptr;
 			}
 
 			/**
 			 * Array index operator for convenient array handling
 			 */
 			X& operator[](int cnt) {
-				return container->ptr[cnt];
+				return mContainer->ptr[cnt];
 			}
 
 			/**
@@ -109,18 +109,18 @@ namespace asdf {
 			 * Gives the raw pointer. Keep use to a minimum.
 			 */
 			X* get() {
-				if(!container)
+				if(!mContainer)
 					return NULL;
-				return container->ptr;
+				return mContainer->ptr;
 			}
 
 			/**
 			 * Returns the current number of references to the raw pointer.
 			 */
 			unsigned int getReferenceCount() {
-				if(!container)
+				if(!mContainer)
 					return 0;
-				return container->count;
+				return mContainer->count;
 			}
 
 		private:
@@ -130,18 +130,18 @@ namespace asdf {
 				public:
 					X *ptr;
 					unsigned int count;
-			} *container;
+			} *mContainer;
 
 			void release() {
-				if(container) {
-					container->count -= 1;
-					if(container->count == 0) {
+				if(mContainer) {
+					mContainer->count -= 1;
+					if(mContainer->count == 0) {
 						// FIXME: Replace with asdf::debugger output
 						printf("Freed memory\n");
-						delete container->ptr;
-						delete container;
+						delete mContainer->ptr;
+						delete mContainer;
 					}
-					container = NULL;
+					mContainer = NULL;
 				}
 			}
 	};
