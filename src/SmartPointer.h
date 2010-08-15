@@ -1,6 +1,3 @@
-namespace {
-	template <class X> class SmartPointer;
-}
 #ifndef ASDF_SMARTPOINTER_H
 #define ASDF_SMARTPOINTER_H
 
@@ -150,4 +147,10 @@ namespace asdf {
 // FIXME: Ugly
 #define SPtr SmartPointer
 
+
 #endif // Headerguard
+
+// Prototype
+namespace {
+	template <class X> class SmartPointer;
+}

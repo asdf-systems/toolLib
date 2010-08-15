@@ -1,6 +1,3 @@
-namespace asdf {
-	class String;
-}
 #ifndef ASDF_STRING_H
 #define ASDF_STRING_H
 
@@ -41,3 +38,8 @@ namespace asdf{
 }
 
 #endif // Headerguard
+
+// Prototype
+namespace asdf {
+	class String;
+}
