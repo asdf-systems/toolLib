@@ -16,3 +16,8 @@ namespace asdf{
 }
 
 #endif //Headerguard
+
+// Prototype
+namespace asdf {
+	class DebugAble;
+}

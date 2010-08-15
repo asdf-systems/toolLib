@@ -1,3 +1,6 @@
+#ifndef ASDF_FILEHANDLER_H
+#define ASDF_FILEHANDLER_H
+
 #include <stdio.h>
 
 namespace asdf{
@@ -19,4 +22,11 @@ namespace asdf{
 			
 	};
 
+}
+
+#endif // Headerguard
+
+// Prototype
+namespace asdf {
+	class Filehandler;
 }

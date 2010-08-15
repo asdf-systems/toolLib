@@ -27,3 +27,8 @@ namespace asdf{
 }
 
 #endif // Headerguard
+
+// Prototype
+namespace {
+	class DebugInfo;
+}

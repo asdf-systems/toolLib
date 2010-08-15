@@ -13,3 +13,8 @@ namespace asdf{
 }
 
 #endif // Headerguard
+
+// Prototype
+namespace {
+	class ReadWriter;
+}

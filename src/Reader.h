@@ -6,8 +6,13 @@
 namespace asdf{
 	
 	class Reader{
-		virtual void read(String& value) = 0;
+		virtual void read(String* value) = 0;
 	};
 }
 
 #endif // Headerguard
+
+// Prototype
+namespace asdf {
+	class Reader;
+}
