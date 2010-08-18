@@ -21,7 +21,7 @@ namespace asdf{
 			//String();
 			//String(const char* value);
 			//virtual ~String() = 0;
-			//virtual void split(String* string, String* pattern, SPtr<String> result) = 0;
+			//virtual void split(String* string, String* pattern, SPtr<String>& result) = 0;
 			//virtual bool match(String* pattern) = 0;
 			virtual void replace(String* replace, String* replaced, SPtr<String>& result) = 0;
 			virtual void subString(int start, int end, SPtr<String>& result) = 0;

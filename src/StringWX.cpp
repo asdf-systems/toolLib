@@ -22,6 +22,41 @@ namespace asdf{
 		return mValue.Length();
 	}
 
+	/*void StringWX::split(String* string, String* pattern, std::vector<String>& result){
+		
+		std::cout << "Split" << std::endl;
+		std::cout << string.toCStr() << std::endl;
+		//mDebugInfo.setFunctionName("Split");
+		
+		SharedPointer<String>* tmpSP = StringFactory::getString();
+		String& tmp = tmpSP->get();
+		wxString save = wxEmptyString;
+		int fst = 0;
+
+		for (int i = 0; i < string.length(); i++)
+		{
+			
+			string.subString(fst,fst,tmp);
+				
+			if (tmp == pattern)
+			{
+				result.push_back(toString(save));
+				save.Clear();
+
+			}
+			else
+				save += toWxStr(tmp);
+			
+			fst++; 
+		}
+		if(save.length() > 0)
+			result.push_back(toString(save));
+		
+		tmpSP->release();
+		
+	}*/
+
+
 	void StringWX::replace(String* replace, String* replaced, SPtr<String>& result) {
 		// We make a copy of mValue because wxString::Replace
 		// does not. It works directly on the wxString.

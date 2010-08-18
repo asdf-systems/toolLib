@@ -12,7 +12,7 @@ namespace asdf{
 	}
 
 	SPtr<String> StringFactory::copyString(String* str) {
-		const char* cstr = str->c_str();
+		const char* cstr = str->c_str();s
 		return StringFactory::createString(cstr);
 	}
 } // namespace asdf

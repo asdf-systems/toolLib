@@ -151,6 +151,6 @@ namespace asdf {
 #endif // Headerguard
 
 // Prototype
-namespace {
+namespace asdf{
 	template <class X> class SmartPointer;
 }
