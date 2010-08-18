@@ -4,7 +4,7 @@
 namespace asdf{
 	class MainWindow {
 		
-		virtual Show(bool) = 0;
+		virtual bool Show(bool) = 0;
 	};
 }
 #endif // Headerguard

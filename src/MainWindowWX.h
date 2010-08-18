@@ -2,17 +2,18 @@
 #define ASDF_MAINWINDOWWX_H
 
 #include <wx/wx.h>
-#include <MainWindow.h>
+#include "MainWindow.h"
+#include "Smartpointer.h"
 
 namespace asdf{
 	
 	class MainWindowWX : public MainWindow, public wxFrame{
 		private:
-
+			SPtr<wxMenu>	mFileMenu;
 		public:	
 			MainWindowWX(const wxString& title);
 			~MainWindowWX();
-			void Show(bool);
+			bool Show(bool);
 
 
 	};
