@@ -30,6 +30,7 @@ namespace asdf{
 			//void clear();
 			int length();
 			SPtr<char> c_str();
+			wxString toWXStr();
 			//String operator+(String& operand);
 			//void operator+=(String& operand);
 			//void operator=(String& operand);

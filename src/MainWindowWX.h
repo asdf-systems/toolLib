@@ -4,12 +4,18 @@
 #include <wx/wx.h>
 #include "GUI_ObjectWX.h"
 #include "Smartpointer.h"
+#include "LayoutManagerWX.h"
+#include "ButtonWX.h"
 
 namespace asdf{
 	
 	class MainWindowWX : public GUI_ObjectWX, public wxFrame{
 		private:
-			SPtr<wxMenu>	mFileMenu;
+			SPtr<wxMenu>			mFileMenu;
+			SPtr<LayoutManagerWX>	mSplitInfo_lym;
+			SPtr<ButtonWX>			mButton;
+			SPtr<ButtonWX>			mButton2;
+			
 		public:	
 			MainWindowWX(const wxString& title);
 			~MainWindowWX();

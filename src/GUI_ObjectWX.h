@@ -4,7 +4,7 @@
 #include "Smartpointer.h"
 
 namespace asdf{
-	class GUI_ObjectWX {
+	class GUI_ObjectWX  {
 	
 		private:
 			SPtr<GUI_ObjectWX>	mParent;

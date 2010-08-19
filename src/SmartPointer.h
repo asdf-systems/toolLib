@@ -58,7 +58,6 @@ namespace asdf {
 					mContainer->count++;
 				return *this;
 			}*/
-
 			/**
 			 * See copy constructor.
 			 */

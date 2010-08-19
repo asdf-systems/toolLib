@@ -82,6 +82,10 @@ namespace asdf{
 				)
 			);
 	}
+	
+	wxString StringWX::toWXStr(){
+		return mValue;
+	}
 
 	SPtr<char> StringWX::c_str() {
 		// The buffer returned by wxString::char_str() is temporary.

@@ -2,16 +2,22 @@
 #define ASDF_LAYOUTMANAGERWX_H
 
 #include "GUI_ObjectWX.h"
-#include "LayoutManager.h"
 #include <vector>
+#include "String.h"
 
 namespace asdf{
 	class LayoutManagerWX : public GUI_ObjectWX{
 		private: 
-			std::vector<SPtr<GUI_ObjectWX>>		mObjects;
+			std::vector<GUI_ObjectWX*>			mObjects;
 			int									mSpacing;
 			SPtr<String>						mType;
 			SPtr<GUI_ObjectWX>					mParent;
+		
+		private:		
+			/**
+			 * reposition all Elements of the Manager
+			*/
+			void refresh();
 		public: 
 			LayoutManagerWX(SPtr<GUI_ObjectWX> parent);
 			~LayoutManagerWX();
@@ -23,12 +29,12 @@ namespace asdf{
 			 * change Order of Objects in the Manager
 			 * move object up in the list
 			*/
-			void moveObjectUp(int steps);
+			void moveObjectUp(int steps, SPtr<GUI_ObjectWX> object);
 			/**
 			 * change Order of Objects in the Manager
 			 * move object down in the list
 			*/
-			void moveObjectDown(int steps);
+			void moveObjectDown(int steps, SPtr<GUI_ObjectWX> object);
 			/**
 			 * Set position type for the Layout Manager \n
 			 * Type options: \n
@@ -36,6 +42,8 @@ namespace asdf{
 			 * \t	vertical
 			*/
 			void setType(String* type);
+
+
 			
 	};
 	
