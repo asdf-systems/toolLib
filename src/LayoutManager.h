@@ -1,6 +1,10 @@
 #ifndef ASDF_LAYOUTMANAGER_H
 #define ASDF_LAYOUTMANAGER_H
 
+#include "GUI_Object.h"
+#include "Smartpointer.h"
+#include "String.h"
+
 namespace asdf{
 	class LayoutManager : public GUI_Object{
 		private:
@@ -25,11 +29,12 @@ namespace asdf{
 			 * \t	horizontal
 			 * \t	vertical
 			*/
-			virtual void setType(String* type) = 0;
+			virtual void setType(SPtr<String> type) = 0;
 			/**
 			 * set the distance between elements in Pixel
 			*/
 			virtual void setSpacing(int dist_in_pixel) = 0;
+
 
 	};
 	

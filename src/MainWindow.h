@@ -1,8 +1,10 @@
 #ifndef ASDF_MAINWINDOW_H
 #define ASDF_MAINWINDOW_H
 
+#include "GUI_Object.h"
+
 namespace asdf{
-	class MainWindow {
+	class MainWindow : public GUI_Object{
 		
 		virtual bool Show(bool) = 0;
 	};
