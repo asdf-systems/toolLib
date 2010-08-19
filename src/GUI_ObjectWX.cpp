@@ -2,8 +2,7 @@
 
 namespace asdf{
 	
-	GUI_ObjectWX::GUI_ObjectWX()
-		: wxWindow(){
+	GUI_ObjectWX::GUI_ObjectWX(){
 	
 	}
 
@@ -26,13 +25,15 @@ namespace asdf{
 	
 	}
 
-	SPtr<GUI_Object> GUI_ObjectWX::getParent(){
+	SPtr<GUI_ObjectWX> GUI_ObjectWX::getParent(){
 	
 	}
 
-	void GUI_ObjectWX::setParent(SPtr<GUI_Object> parent){
+	void GUI_ObjectWX::setParent(SPtr<GUI_ObjectWX> parent){
 	
 	}
+
+
 
 
 		

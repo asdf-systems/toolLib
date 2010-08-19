@@ -2,13 +2,13 @@
 
 namespace asdf{
 	
-	LayoutManagerWX::LayoutManagerWX(SPtr<GUI_Object> parent){
+	LayoutManagerWX::LayoutManagerWX(SPtr<GUI_ObjectWX> parent){
 	
 	}
 	LayoutManagerWX::~LayoutManagerWX(){
 	
 	}
-	void LayoutManagerWX::addElement(SPtr<GUI_Object> object){
+	void LayoutManagerWX::addElement(SPtr<GUI_ObjectWX> object){
 	
 	}
 	

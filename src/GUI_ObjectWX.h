@@ -1,17 +1,16 @@
 #ifndef ASDF_GUI_OBJECTWX_H
 #define ASDF_GUI_OBJECTWX_H
 
-#include "GUI_Object.h"
-#include <wx/wx.h>
+#include "Smartpointer.h"
 
 namespace asdf{
-	class GUI_ObjectWX : public wxWindow{
+	class GUI_ObjectWX {
 	
 		private:
-			SPtr<GUI_Object>	mParent;
+			SPtr<GUI_ObjectWX>	mParent;
 		public:	
 			GUI_ObjectWX();
-			GUI_ObjectWX(SPtr<GUI_Object> parent);
+			GUI_ObjectWX(SPtr<GUI_ObjectWX> parent);
 			~GUI_ObjectWX();
 			/**
 			 * set the position of the Object relative to parent
@@ -20,8 +19,9 @@ namespace asdf{
 			void setSize(int x, int y);
 			void getPosition(int& x, int& y);
 			void getSize(int& x, int& y);
-			SPtr<GUI_Object> getParent();
-			void setParent(SPtr<GUI_Object> parent);
+			SPtr<GUI_ObjectWX> getParent();
+			void setParent(SPtr<GUI_ObjectWX> parent);
+			
 
 	};
 }

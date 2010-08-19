@@ -8,17 +8,17 @@
 namespace asdf{
 	class LayoutManagerWX : public GUI_ObjectWX{
 		private: 
-			std::vector<SPtr<GUI_Object>>		mObjects;
+			std::vector<SPtr<GUI_ObjectWX>>		mObjects;
 			int									mSpacing;
 			SPtr<String>						mType;
-			SPtr<GUI_Object>					mParent;
+			SPtr<GUI_ObjectWX>					mParent;
 		public: 
-			LayoutManagerWX(SPtr<GUI_Object> parent);
+			LayoutManagerWX(SPtr<GUI_ObjectWX> parent);
 			~LayoutManagerWX();
 			/**
 			 * Add GUI element to Layout Manager - so that Layout Manager take care about position \n
 			*/
-			void addElement(SPtr<GUI_Object> object);
+			void addElement(SPtr<GUI_ObjectWX> object);
 			/**
 			 * change Order of Objects in the Manager
 			 * move object up in the list

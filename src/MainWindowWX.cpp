@@ -3,7 +3,7 @@
 namespace asdf{
 	
 	MainWindowWX::MainWindowWX(const wxString& title)
-		   : wxFrame(NULL, wxID_ANY, title, wxDefaultPosition, wxSize(250, 150))
+		   : wxFrame(NULL, wxID_ANY, title, wxDefaultPosition, wxSize(1200, 600))
 	{
 	    mFileMenu = SPtr<wxMenu>(new wxMenu());
 
@@ -14,7 +14,5 @@ namespace asdf{
 	
 	}
 
-	bool MainWindowWX::Show(bool value){
-		return (wxFrame::Show(value));
-	}
+	
 } // namespace

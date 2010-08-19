@@ -51,13 +51,13 @@ namespace asdf {
 			 * 		a = SPtr<int>(new int(5));
 			 * 	}
 			 */
-			SmartPointer& operator=(SmartPointer ptr) {
+			/*SmartPointer& operator=(SmartPointer ptr) {
 				release(); // Release old container
 				mContainer = ptr.mContainer; // Obtain new one
 				if(mContainer)
 					mContainer->count++;
 				return *this;
-			}
+			}*/
 
 			/**
 			 * See copy constructor.
