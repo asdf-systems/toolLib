@@ -24,11 +24,4 @@ namespace asdf{
 	
 	}
 	
-	void LayoutManagerWX::setPosition(int x, int y){
-	
-	}
-	
-	void LayoutManagerWX::setSize(int x, int y){
-	
-	}
 } // namespace

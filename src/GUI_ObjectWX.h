@@ -5,7 +5,7 @@
 #include <wx/wx.h>
 
 namespace asdf{
-	class GUI_ObjectWX : public GUI_Object, public wxWindow{
+	class GUI_ObjectWX : public wxWindow{
 	
 		private:
 			SPtr<GUI_Object>	mParent;
@@ -13,6 +13,9 @@ namespace asdf{
 			GUI_ObjectWX();
 			GUI_ObjectWX(SPtr<GUI_Object> parent);
 			~GUI_ObjectWX();
+			/**
+			 * set the position of the Object relative to parent
+			*/
 			void setPosition(int x, int y);
 			void setSize(int x, int y);
 			void getPosition(int& x, int& y);
