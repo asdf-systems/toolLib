@@ -1,7 +1,7 @@
 #ifndef ASDF_GUI_OBJECTWX_H
 #define ASDF_GUI_OBJECTWX_H
 
-#include "Smartpointer.h"
+#include "SmartPointer.h"
 
 namespace asdf{
 	class GUI_ObjectWX  {
@@ -24,6 +24,8 @@ namespace asdf{
 			
 
 	};
+	
+	typedef GUI_ObjectWX GUI_Object;
 }
 
 #endif // Headerguardf

@@ -46,24 +46,8 @@ namespace asdf {
 
 			/**
 			 * See copy constructor.
-			 * FIXME: Why do I need this to get something like this to work?
-			 * 	void (SPtr<int>& a) {
-			 * 		a = SPtr<int>(new int(5));
-			 * 	}
 			 */
-			#ifdef __unix__
-			SmartPointer& operator=(SmartPointer ptr) {
-				release(); // Release old container
-				mContainer = ptr.mContainer; // Obtain new one
-				if(mContainer)
-					mContainer->count++;
-				return *this;
-			}
-			#endif
-			/**
-			 * See copy constructor.
-			 */
-			SmartPointer& operator=(SmartPointer& ptr) {
+			SmartPointer<X>& operator=(const SmartPointer<X>& ptr) {
 				if(&ptr != this) {
 					release(); // Release old container
 					mContainer = ptr.mContainer; // Obtain new one

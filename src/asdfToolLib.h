@@ -1,3 +1,3 @@
-#include "MainWindowWX.h"
-#include "Smartpointer.h"
-#include "LayoutManagerWX.h"
+#include "MainWindow.h"
+#include "SmartPointer.h"
+#include "LayoutManager.h"

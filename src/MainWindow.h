@@ -1,0 +1,2 @@
+#include "MainWindowWX.h"
+

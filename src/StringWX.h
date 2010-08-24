@@ -22,6 +22,7 @@ namespace asdf{
 			StringWX(const char* val);
 			StringWX(wxString val);
 			~StringWX();
+			wxString toWxStr();
 			// wildcard match
 			SPtr< std::vector< StringWX > > split(StringWX string, StringWX pattern);
 			StringWX subString(int start, int end);
@@ -41,8 +42,7 @@ namespace asdf{
 			//String operator+=(String& operand);
 			//String operator=(String& operand);
 			//bool operator==(String& operand);
-		protected:
-			wxString toWXStr();
+			
 	};
 	
 typedef StringWX String;

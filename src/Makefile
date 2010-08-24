@@ -2,8 +2,12 @@
 
 TARG=testCase
 CPPFILES=\
-	$(TARG).cpp\
-	StringWX.cpp 
+	StringWX.cpp \
+	ButtonWX.cpp \
+	GUI_ObjectWX.cpp \
+	LayoutManagerWX.cpp \
+	MainWindowWX.cpp 
+
 	
 
 CXX = g++
@@ -30,10 +34,11 @@ obj:
 	$(CXX) $(CXXFLAGS) -c $(CPPFILES)
 
 link:
-	$(CXX) $(CXXFLAGS) $(LDFLAGS) $(OBJFILES) -o $(TARG)
+	#$(CXX) $(CXXFLAGS) $(LDFLAGS) $(OBJFILES) -o $(TARG)
+	ar -rs libasdf.a *.o
 
 clean:
-	-@rm -f *.o $(TARG) *~
+	-@rm -f *.o $(TARG) *~ *.a
 
 run:
 	./$(TARG)

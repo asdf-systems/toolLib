@@ -3,9 +3,10 @@
 
 #include <wx/wx.h>
 #include "GUI_ObjectWX.h"
-#include "Smartpointer.h"
+#include "SmartPointer.h"
 #include "LayoutManagerWX.h"
 #include "ButtonWX.h"
+#include "String.h"
 
 namespace asdf{
 	
@@ -17,13 +18,14 @@ namespace asdf{
 			SPtr<ButtonWX>			mButton2;
 			
 		public:	
-			MainWindowWX(const wxString& title);
+			MainWindowWX(String title);
 			~MainWindowWX();
 			
 
 
 	};
 
+	typedef MainWindowWX MainWindow;
 } // namespace
 
 #endif // Headerguard

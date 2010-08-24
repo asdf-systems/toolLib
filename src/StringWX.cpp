@@ -67,7 +67,7 @@ namespace asdf{
 		
 	}
 	
-	wxString StringWX::toWXStr(){
+	wxString StringWX::toWxStr(){
 		return mValue;
 	}
 

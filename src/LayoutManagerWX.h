@@ -4,6 +4,7 @@
 #include "GUI_ObjectWX.h"
 #include <vector>
 #include "String.h"
+#include "SmartPointer.h"
 
 namespace asdf{
 	class LayoutManagerWX : public GUI_ObjectWX{
@@ -47,10 +48,11 @@ namespace asdf{
 			
 	};
 	
+	typedef LayoutManagerWX LayoutManager;	
 } // namespace asdf
 
 #endif // HeaderGuard
 
 namespace asdf{
-	class LayoutManager;
+	class LayoutManagerWX;
 }
