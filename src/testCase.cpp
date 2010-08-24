@@ -1,10 +1,9 @@
 #include <iostream>
 #include "SmartPointer.h"
-#include "String.h"
-#include "StringFactory.h"
 
 typedef void (*testFunction)(void);
 
+#ifdef TEST_SMARTPOINTER
 void testSmartPointer_subfunc_1(int* ptr) {
 	printf("\tAutocast gives: %d\n", *ptr);
 }
@@ -13,6 +12,7 @@ void testSmartPointer_subfunc_2(asdf::SPtr<int>& a) {
 	printf("\tRepointing ptr1\n");
 	a = asdf::SPtr<int>(new int(4));
 }
+
 
 void testSmartPointer() {
 	asdf::SmartPointer<int> ptr1(new int(5));
@@ -32,7 +32,8 @@ void testSmartPointer() {
 	printf("ptr2: Pointer value: %d, Count: %d\n", *ptr2, ptr2.getReferenceCount());
 	printf("ptr3: Pointer value: %d, Count: %d\n", *ptr2, ptr2.getReferenceCount());
 }
-
+#endif
+#ifdef TEST_STRING
 void testString(){
 	// String creation test
 	asdf::SPtr<asdf::String> testStr = asdf::StringFactory::createString("test 123 xyz");
@@ -57,10 +58,15 @@ void testString(){
 			testRepStr);
 	printf("Replaced String: \"%s\"\n", testRepStr->c_str().get());
 }
+#endif
 
 testFunction testFunctions[] = {
+	#ifdef TEST_SMARTPOINTER
 	&testSmartPointer,
+	#endif
+	#ifdef TEST_STRING
 	&testString,
+	#endif
 	NULL
 };
 

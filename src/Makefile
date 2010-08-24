@@ -3,9 +3,7 @@
 TARG=testCase
 CPPFILES=\
 	$(TARG).cpp\
-	StringFactory.cpp \
-	StringWX.cpp \
-	DebugInfo.cpp \
+	StringWX.cpp 
 	
 
 CXX = g++

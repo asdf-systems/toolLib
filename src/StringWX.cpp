@@ -1,5 +1,5 @@
 #include "StringWX.h"
-#include "StringFactory.h"
+
 namespace asdf{
 	
 	StringWX::StringWX(){
@@ -22,9 +22,9 @@ namespace asdf{
 		return mValue.Length();
 	}
 
-	/*void StringWX::split(String* string, String* pattern, std::vector<String>& result){
+	SPtr<std::vector<StringWX> > StringWX::split(StringWX string, StringWX pattern){
 		
-		std::cout << "Split" << std::endl;
+		/*std::cout << "Split" << std::endl;
 		std::cout << string.toCStr() << std::endl;
 		//mDebugInfo.setFunctionName("Split");
 		
@@ -53,34 +53,18 @@ namespace asdf{
 			result.push_back(toString(save));
 		
 		tmpSP->release();
-		
-	}*/
-
-
-	void StringWX::replace(String* replace, String* replaced, SPtr<String>& result) {
-		// We make a copy of mValue because wxString::Replace
-		// does not. It works directly on the wxString.
-		// DO NOT MERGE THESE LINES. It breaks stuff...
-		// GCC is just too eager with optimizing
-		wxString copy(mValue);
-		SPtr<StringWX> sop1 = String2StringWX(replace);
-		SPtr<StringWX> sop2 = String2StringWX(replaced);
-		const wxChar* op1 = sop1->c_strWX();
-		const wxChar* op2 = sop2->c_strWX();
-		copy.Replace(op1, op2);
-		result = SPtr<String>(
-			dynamic_cast<String*>(
-				new StringWX(copy)
-				)
-			);
+		*/	
+		return NULL;
 	}
 
-	void StringWX::subString(int start, int end, SPtr<String>& result) {
-		result = SPtr<String>(
-			dynamic_cast<String*>(
-				new StringWX(mValue.SubString(start, end))
-				)
-			);
+
+	StringWX StringWX::replace(StringWX replace, StringWX replaced) {
+		return String();
+	}
+
+	String StringWX::subString(int start, int end) {
+		return String();
+		
 	}
 	
 	wxString StringWX::toWXStr(){
@@ -93,7 +77,7 @@ namespace asdf{
 		// Therefore we copy the content into an garbage collected 
 		// buffer.
 		//
-		// FIXME: Unidiomatc?! Does C++ really have a better way for
+		// \FIXME: Unidiomatc?! Does C++ really have a better way for
 		// handling C-Strings?
 		SPtr<char> p(new char[length()+1]);
 		strcpy(p, mValue.char_str());
@@ -104,7 +88,5 @@ namespace asdf{
 		return mValue.c_str();
 	}
 
-	SPtr<StringWX> StringWX::String2StringWX(String *p) {
-		return SPtr<StringWX>(new StringWX(p->c_str()));
-	}
+
 } // namespace asdf
